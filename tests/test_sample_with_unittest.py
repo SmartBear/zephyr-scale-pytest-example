@@ -3,17 +3,14 @@ import unittest
 
 class TestStringMethods(unittest.TestCase):
 
-    @pytest.mark.test_case_key('DEV-123')
-    def test_upper(self):
+    def test_upper_DEV_123(self):
         self.assertEqual('foo'.upper(), 'FOO')
 
-    @pytest.mark.test_case_key('DEV-124')
-    def test_isupper(self):
+    def test_isupper_DEV_124(self):
         self.assertTrue('FOO'.isupper())
         self.assertFalse('Foo'.isupper())
 
-    @pytest.mark.test_case_key('DEV-125')
-    def test_split(self):
+    def test_split_DEV_125(self):
         s = 'hello world'
         self.assertEqual(s.split(), ['hello', 'world'])
         with self.assertRaises(TypeError):

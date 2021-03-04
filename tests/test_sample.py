@@ -2,28 +2,25 @@ import pytest
 
 class TestClass:
 
-    def DEV_T19_test_method_1(self, record_property):
-        record_property('testCaseKey', 'DEV-T19')
+    def test_method_1_DEV_T19(self):
         assert 1 == 1
 
     @pytest.mark.skip(reason='no way of currently testing this')
-    def DEV_T20_test_method_2(self, record_property):
-        record_property('testCaseKey', 'DEV-T20')
+    def test_method_2_DEV_T20(self):
         assert 3 == 5
 
-    def DEV_T21_test_method_3(self):
+    # will match with test case with key DEV-T21
+    def test_method_3_DEV_T21(self):
         assert 5 == 5
 
-    def DEV_T22_test_method_4(self, record_property):
-        record_property('testCaseKey', 'DEV-T19')
+    # will match with test case named tests.test_sample.TestClass.test_method
+    def test_method(self):
         x = 'this'
         assert 'h' in x
 
-
-def DEV_T23_test_method_1_without_class(record_property):
-    record_property('testCaseKey', 'DEV-T23')
+# will match with test case named tests.test_sample.test_method_1_without_class
+def test_method_1_without_class():
     assert 1 == 1
 
-def DEV_T24_test_method_2_without_class(record_property):
-    record_property('testCaseKey', 'DEV-T24')
+def test_method_2_without_class_DEV_T24():
     assert 1 == 0

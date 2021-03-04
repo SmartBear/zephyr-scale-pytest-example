@@ -1,24 +1,23 @@
 import pytest
 
+# will match with test case with key DEV-T30
 @pytest.mark.parametrize('test_input,expected', [('3+5', 8), ('2+4', 7), ('6*9', 42)])
-def DEV_T30_parametrized_test(test_input, expected):
+def test_parametrized_DEV_T30(test_input, expected):
     assert eval(test_input) == expected
 
 @pytest.mark.parametrize('test_input,expected', [('3+5', 8), ('2+4', 7), ('6*9', 42)])
-def DEV_T30_parametrized_test(test_input, expected, record_property):
-    record_property('testCaseKey', 'DEV-T30')
+def test_parametrized(test_input, expected):
     assert eval(test_input) == expected
 
 
 @pytest.mark.skip(reason='require further analysis')
 @pytest.mark.parametrize('test_input,expected', [('3+5', 8), ('2+4', 6), ('6*9', 42)])
-def DEV_T32_parametrized_test(test_input, expected):
+def test_parametrized_DEV_T32(test_input, expected):
     assert eval(test_input) == expected
 
 
-class ParametrizedTestClass:
+class TestParametrizedClass:
 
     @pytest.mark.parametrize('test_input,expected', [('3+5', 8), ('2+4', 6), ('6*9', 42)])
-    def DEV_T33_parametrized_test_in_class(test_input, expected, record_property):
-        record_property('testCaseKey', 'DEV-T33')
+    def test_parametrized_in_class_DEV_T35(self, test_input, expected):
         assert eval(test_input) == expected

@@ -1,66 +1,82 @@
 ============================= test session starts ==============================
 platform darwin -- Python 3.6.0, pytest-6.2.2, py-1.10.0, pluggy-0.13.1
 rootdir: /Users/Alicja.Majewska/Projects/zephyr-scale-pytest-example, configfile: pytest.ini
-collected 17 items
+collected 23 items
 
-tests/test_ignored.py ss                                                 [ 11%]
-tests/test_parametrized.py .FFsss                                        [ 47%]
-tests/test_sample.py .s...F                                              [ 82%]
+tests/test_ignored.py ss                                                 [  8%]
+tests/test_parametrized.py .FF.FFsss..F                                  [ 60%]
+tests/test_sample.py .s...F                                              [ 86%]
 tests/test_sample_with_unittest.py ...                                   [100%]
 
 =================================== FAILURES ===================================
-_______________________ DEV_T30_parametrized_test[2+4-7] _______________________
+_______________________ test_parametrized_DEV_T30[2+4-7] _______________________
 
 test_input = '2+4', expected = 7
-record_property = <function record_property.<locals>.append_property at 0x1023aa6a8>
 
     @pytest.mark.parametrize('test_input,expected', [('3+5', 8), ('2+4', 7), ('6*9', 42)])
-    def DEV_T30_parametrized_test(test_input, expected, record_property):
-        record_property('testCaseKey', 'DEV-T30')
+    def test_parametrized_DEV_T30(test_input, expected):
+>       assert eval(test_input) == expected
+E       AssertionError: assert 6 == 7
+E        +  where 6 = eval('2+4')
+
+tests/test_parametrized.py:6: AssertionError
+______________________ test_parametrized_DEV_T30[6*9-42] _______________________
+
+test_input = '6*9', expected = 42
+
+    @pytest.mark.parametrize('test_input,expected', [('3+5', 8), ('2+4', 7), ('6*9', 42)])
+    def test_parametrized_DEV_T30(test_input, expected):
+>       assert eval(test_input) == expected
+E       AssertionError: assert 54 == 42
+E        +  where 54 = eval('6*9')
+
+tests/test_parametrized.py:6: AssertionError
+___________________________ test_parametrized[2+4-7] ___________________________
+
+test_input = '2+4', expected = 7
+
+    @pytest.mark.parametrize('test_input,expected', [('3+5', 8), ('2+4', 7), ('6*9', 42)])
+    def test_parametrized(test_input, expected):
 >       assert eval(test_input) == expected
 E       AssertionError: assert 6 == 7
 E        +  where 6 = eval('2+4')
 
 tests/test_parametrized.py:10: AssertionError
-______________________ DEV_T30_parametrized_test[6*9-42] _______________________
+__________________________ test_parametrized[6*9-42] ___________________________
 
 test_input = '6*9', expected = 42
-record_property = <function record_property.<locals>.append_property at 0x1023d17b8>
 
     @pytest.mark.parametrize('test_input,expected', [('3+5', 8), ('2+4', 7), ('6*9', 42)])
-    def DEV_T30_parametrized_test(test_input, expected, record_property):
-        record_property('testCaseKey', 'DEV-T30')
+    def test_parametrized(test_input, expected):
 >       assert eval(test_input) == expected
 E       AssertionError: assert 54 == 42
 E        +  where 54 = eval('6*9')
 
 tests/test_parametrized.py:10: AssertionError
-_____________________ DEV_T24_test_method_2_without_class ______________________
+_______ TestParametrizedClass.test_parametrized_in_class_DEV_T35[6*9-42] _______
 
-record_property = <function record_property.<locals>.append_property at 0x1023d1ae8>
+self = <test_parametrized.TestParametrizedClass object at 0x10a4045c0>
+test_input = '6*9', expected = 42
 
-    def DEV_T24_test_method_2_without_class(record_property):
-        record_property('testCaseKey', 'DEV-T24')
+    @pytest.mark.parametrize('test_input,expected', [('3+5', 8), ('2+4', 6), ('6*9', 42)])
+    def test_parametrized_in_class_DEV_T35(self, test_input, expected):
+>       assert eval(test_input) == expected
+E       AssertionError: assert 54 == 42
+E        +  where 54 = eval('6*9')
+
+tests/test_parametrized.py:23: AssertionError
+_____________________ test_method_2_without_class_DEV_T24 ______________________
+
+    def test_method_2_without_class_DEV_T24():
 >       assert 1 == 0
 E       assert 1 == 0
 
-tests/test_sample.py:29: AssertionError
-=============================== warnings summary ===============================
-tests/test_sample_with_unittest.py:6
-  /Users/Alicja.Majewska/Projects/zephyr-scale-pytest-example/tests/test_sample_with_unittest.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.test_case_key - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
-    @pytest.mark.test_case_key('DEV-123')
-
-tests/test_sample_with_unittest.py:10
-  /Users/Alicja.Majewska/Projects/zephyr-scale-pytest-example/tests/test_sample_with_unittest.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.test_case_key - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
-    @pytest.mark.test_case_key('DEV-124')
-
-tests/test_sample_with_unittest.py:15
-  /Users/Alicja.Majewska/Projects/zephyr-scale-pytest-example/tests/test_sample_with_unittest.py:15: PytestUnknownMarkWarning: Unknown pytest.mark.test_case_key - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
-    @pytest.mark.test_case_key('DEV-125')
-
--- Docs: https://docs.pytest.org/en/stable/warnings.html
+tests/test_sample.py:26: AssertionError
 =========================== short test summary info ============================
-FAILED tests/test_parametrized.py::DEV_T30_parametrized_test[2+4-7] - Asserti...
-FAILED tests/test_parametrized.py::DEV_T30_parametrized_test[6*9-42] - Assert...
-FAILED tests/test_sample.py::DEV_T24_test_method_2_without_class - assert 1 == 0
-============== 3 failed, 8 passed, 6 skipped, 3 warnings in 0.10s ==============
+FAILED tests/test_parametrized.py::test_parametrized_DEV_T30[2+4-7] - Asserti...
+FAILED tests/test_parametrized.py::test_parametrized_DEV_T30[6*9-42] - Assert...
+FAILED tests/test_parametrized.py::test_parametrized[2+4-7] - AssertionError:...
+FAILED tests/test_parametrized.py::test_parametrized[6*9-42] - AssertionError...
+FAILED tests/test_parametrized.py::TestParametrizedClass::test_parametrized_in_class_DEV_T35[6*9-42]
+FAILED tests/test_sample.py::test_method_2_without_class_DEV_T24 - assert 1 == 0
+=================== 6 failed, 11 passed, 6 skipped in 0.10s ====================
