@@ -42,3 +42,7 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual('foo'.upper(), 'FOO')
 ```
 
+### Execute tests in the example
+In order to execute tests in the example on your local machine you’ll have to checkout this repository and install python 3 and pip. 
+Next, install pytest `pip install pytest`. 
+To use the code example, simply run `pyest` in the root folder. In order to generate junit format, use `pytest --junitxml=output/junitxml_report.xml`.

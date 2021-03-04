@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+    <testsuite errors="0" failures="3" hostname="SB-PL-76TMD6M" name="pytest" skipped="6" tests="17" time="0.101"
+               timestamp="2021-03-03T18:55:41.207235">
+        <testcase classname="tests.test_ignored.TestIgnoredClass" name="DEV_T40_test_method1" time="0.000">
+            <skipped message="no way of currently testing this" type="pytest.skip">
+                /Users/Alicja.Majewska/Projects/zephyr-scale-pytest-example/tests/test_ignored.py:6: no way of currently
+                testing this
+            </skipped>
+        </testcase>
+        <testcase classname="tests.test_ignored.TestIgnoredClass" name="DEV_T41_test_method3" time="0.000">
+            <skipped message="no way of currently testing this" type="pytest.skip">
+                /Users/Alicja.Majewska/Projects/zephyr-scale-pytest-example/tests/test_ignored.py:10: no way of
+                currently testing this
+            </skipped>
+        </testcase>
+        <testcase classname="tests.test_parametrized" name="DEV_T30_parametrized_test[3+5-8]" time="0.001">
+            <properties>
+                <property name="testCaseKey" value="DEV-T30"/>
+            </properties>
+        </testcase>
+        <testcase classname="tests.test_parametrized" name="DEV_T30_parametrized_test[2+4-7]" time="0.003">
+            <properties>
+                <property name="testCaseKey" value="DEV-T30"/>
+            </properties>
+            <failure message="AssertionError: assert 6 == 7&#10; +  where 6 = eval('2+4')">test_input = '2+4', expected
+                = 7, record_property = &lt;function record_property.&lt;locals&gt;.append_property at 0x10cfdd9d8&gt;
+
+                @pytest.mark.parametrize('test_input,expected', [('3+5', 8), ('2+4', 7), ('6*9', 42)])
+                def DEV_T30_parametrized_test(test_input, expected, record_property):
+                record_property('testCaseKey', 'DEV-T30')
+                &gt; assert eval(test_input) == expected
+                E AssertionError: assert 6 == 7
+                E + where 6 = eval('2+4')
+
+                tests/test_parametrized.py:10: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="tests.test_parametrized" name="DEV_T30_parametrized_test[6*9-42]" time="0.001">
+            <properties>
+                <property name="testCaseKey" value="DEV-T30"/>
+            </properties>
+            <failure message="AssertionError: assert 54 == 42&#10; +  where 54 = eval('6*9')">test_input = '6*9',
+                expected = 42, record_property = &lt;function record_property.&lt;locals&gt;.append_property at
+                0x10d001c80&gt;
+
+                @pytest.mark.parametrize('test_input,expected', [('3+5', 8), ('2+4', 7), ('6*9', 42)])
+                def DEV_T30_parametrized_test(test_input, expected, record_property):
+                record_property('testCaseKey', 'DEV-T30')
+                &gt; assert eval(test_input) == expected
+                E AssertionError: assert 54 == 42
+                E + where 54 = eval('6*9')
+
+                tests/test_parametrized.py:10: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="tests.test_parametrized" name="DEV_T32_parametrized_test[3+5-8]" time="0.000">
+            <skipped message="require further analysis" type="pytest.skip">
+                /Users/Alicja.Majewska/Projects/zephyr-scale-pytest-example/tests/test_parametrized.py:13: require
+                further analysis
+            </skipped>
+        </testcase>
+        <testcase classname="tests.test_parametrized" name="DEV_T32_parametrized_test[2+4-6]" time="0.000">
+            <skipped message="require further analysis" type="pytest.skip">
+                /Users/Alicja.Majewska/Projects/zephyr-scale-pytest-example/tests/test_parametrized.py:13: require
+                further analysis
+            </skipped>
+        </testcase>
+        <testcase classname="tests.test_parametrized" name="DEV_T32_parametrized_test[6*9-42]" time="0.000">
+            <skipped message="require further analysis" type="pytest.skip">
+                /Users/Alicja.Majewska/Projects/zephyr-scale-pytest-example/tests/test_parametrized.py:13: require
+                further analysis
+            </skipped>
+        </testcase>
+        <testcase classname="tests.test_sample.TestClass" name="DEV_T19_test_method_1" time="0.001">
+            <properties>
+                <property name="testCaseKey" value="DEV-T19"/>
+            </properties>
+        </testcase>
+        <testcase classname="tests.test_sample.TestClass" name="DEV_T20_test_method_2" time="0.000">
+            <skipped message="no way of currently testing this" type="pytest.skip">
+                /Users/Alicja.Majewska/Projects/zephyr-scale-pytest-example/tests/test_sample.py:9: no way of currently
+                testing this
+            </skipped>
+        </testcase>
+        <testcase classname="tests.test_sample.TestClass" name="DEV_T21_test_method_3" time="0.001"/>
+        <testcase classname="tests.test_sample.TestClass" name="DEV_T22_test_method_4" time="0.001">
+            <properties>
+                <property name="testCaseKey" value="DEV-T19"/>
+            </properties>
+        </testcase>
+        <testcase classname="tests.test_sample" name="DEV_T23_test_method_1_without_class" time="0.001">
+            <properties>
+                <property name="testCaseKey" value="DEV-T23"/>
+            </properties>
+        </testcase>
+        <testcase classname="tests.test_sample" name="DEV_T24_test_method_2_without_class" time="0.001">
+            <properties>
+                <property name="testCaseKey" value="DEV-T24"/>
+            </properties>
+            <failure message="assert 1 == 0">record_property = &lt;function record_property.&lt;locals&gt;.append_property
+                at 0x10d025840&gt;
+
+                def DEV_T24_test_method_2_without_class(record_property):
+                record_property('testCaseKey', 'DEV-T24')
+                &gt; assert 1 == 0
+                E assert 1 == 0
+
+                tests/test_sample.py:29: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="tests.test_sample_with_unittest.TestStringMethods" name="test_isupper" time="0.001">
+            <properties>
+                <property name="testCaseKey" value="DEV-124"/>
+            </properties>
+        </testcase>
+        <testcase classname="tests.test_sample_with_unittest.TestStringMethods" name="test_split" time="0.000">
+            <properties>
+                <property name="testCaseKey" value="DEV-125"/>
+            </properties>
+        </testcase>
+        <testcase classname="tests.test_sample_with_unittest.TestStringMethods" name="test_upper" time="0.001">
+            <properties>
+                <property name="testCaseKey" value="DEV-123"/>
+            </properties>
+        </testcase>
+    </testsuite>
+</testsuites>
