@@ -1,6 +1,6 @@
-# Zephyr Scale and PyTest integration
+# Zephyr Scale and pytest integration
 
-This is an example project that demonstrates how to configure PyTest to generate the JUnit XML results file required for uploading test results to Zephyr Scale using the API [`POST /automations/executions/junit`](https://support.smartbear.com/zephyr-scale-cloud/api-docs/#operation/createJUnitExecutions).
+This is an example project that demonstrates how to configure pytest to generate the JUnit XML results file required for uploading test results to Zephyr Scale using the API [`POST /automations/executions/junit`](https://support.smartbear.com/zephyr-scale-cloud/api-docs/#operation/createJUnitExecutions).
 
 ### Configuration
 
@@ -8,13 +8,13 @@ No configuration is required beforehand. Check the section below to see how to e
 
 ## Executing tests and uploading results to Zephyr Scale
 
-In order to instruct PyTest to generate the JUnit XML results file, all that is required is to execute the tests with `--junitxml` parameter followed by the xml file name. Here is an example:
+In order to instruct pytest to generate the JUnit XML results file, all that is required is to execute the tests with `--junitxml` parameter followed by the xml file name. Here is an example:
 
 ```
 pytest --junitxml=output/junitxml_report.xml
 ```
 
-The command line above will execute the PyTest tests and generate the JUnit XML results file `output/junitxml_report.xml`. Then, this file containing the test results can be uploaded to Zephyr Scale using the following API endpoint: [`POST /automations/executions/junit`](https://support.smartbear.com/zephyr-scale-cloud/api-docs/#operation/createJUnitExecutions).
+The command line above will execute the pytest tests and generate the JUnit XML results file `output/junitxml_report.xml`. Then, this file containing the test results can be uploaded to Zephyr Scale using the following API endpoint: [`POST /automations/executions/junit`](https://support.smartbear.com/zephyr-scale-cloud/api-docs/#operation/createJUnitExecutions).
 
 The abovementioned API accepts either a single XML file as well as a .zip file containing multiple XML files. The POST request will create a new test cycle in Zephyr Scale containing the results and will respond with the key of the created test cycle.
 
