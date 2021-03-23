@@ -1,19 +1,32 @@
-# The exemplary configuration of pytest library to use its output in Zephyr Scale 
+# Zephyr Scale and PyTest integration
 
-This is an example how to configure pytest library to generate output file that could be used as input for `/automations/executions/junit` endpoint.
+This is an example project that demonstrates how to configure PyTest to generate the JUnit XML results file required for uploading test results to Zephyr Scale using the API [`POST /automations/executions/junit`](https://support.smartbear.com/zephyr-scale-cloud/api-docs/#operation/createJUnitExecutions).
 
 ### Configuration
-The framework supports JUnitXml format out of the box. In order to generate file that is accepted by Zephyr Scale automation endpoint, it's sufficient to add the `--junitxml` option with the path of the output file, like  
-`pytest --junitxml=output/junitxml_report.xml`. 
+
+No configuration is required beforehand. Check the section below to see how to execute tests and upload the test results to Zephyr Scale.
+
+## Executing tests and uploading results to Zephyr Scale
+
+In order to instruct PyTest to generate the JUnit XML results file, all that is required is to execute the tests with `--junitxml` parameter followed by the xml file name. Here is an example:
+
+```
+pytest --junitxml=output/junitxml_report.xml
+```
+
+The command line above will execute the PyTest tests and generate the JUnit XML results file `output/junitxml_report.xml`. Then, this file containing the test results can be uploaded to Zephyr Scale using the following API endpoint: [`POST /automations/executions/junit`](https://support.smartbear.com/zephyr-scale-cloud/api-docs/#operation/createJUnitExecutions).
+
+The abovementioned API accepts either a single XML file as well as a .zip file containing multiple XML files. The POST request will create a new test cycle in Zephyr Scale containing the results and will respond with the key of the created test cycle.
 
 ### Naming conventions
+
 In the declared path or current directory, it searches for test_*.py or *_test.py files, imported by their test package name.
 From those files, collect test items:
 - `test` prefixed test functions or methods outside of class
 - `test` prefixed test functions or methods inside `Test` prefixed test classes (without an __init__ method)
 (https://docs.pytest.org/en/stable/goodpractices.html#test-discovery)
 
-However, the JUnit automation endpoint relies on the specific format of naming tests - test case name is matched by full class name (or file path) and test method name or test case key is parsed from the method name if it starts with it or ends with it.
+However, Zephyr Scale relies on a specific format for naming tests: either test case name is matched by full class name (or file path) and test method name or a test case key is parsed from the method name if the method name starts or ends with a Zephyr Scale test case key.
 In order to mark a test with a test case key, it must be added at the end of the name. (Or the configuration of pytest framework might be adjusted, more information here: https://docs.pytest.org/en/stable/example/pythoncollection.html)
 
 For example from TestClass:
@@ -33,10 +46,13 @@ class TestClass:
 # will match with test case named tests.test_sample.test_method_1_without_class
 def test_method_1_without_class():
     assert 1 == 1
-
 ```
+## Requirements to run this example project
 
-### Execute tests in the example
-In order to execute tests in the example on your local machine you’ll have to checkout this repository and install python 3 and pip. 
-Next, install pytest `pip install pytest`. 
+In order to execute tests in the example on your local machine you’ll have to checkout this repository and install python 3 and pip.
+Next, install pytest: `pip install pytest`.
 To use the code example, simply run `pyest` in the root folder. In order to generate junit format, use `pytest --junitxml=output/junitxml_report.xml`.
+
+## More information
+
+For more information, please head to our [documentation page](https://support.smartbear.com/zephyr-scale) or get in [touch with us](https://smartbear.atlassian.net/servicedesk/) if you have any issues or need help.
